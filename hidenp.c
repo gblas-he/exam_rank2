@@ -1,3 +1,4 @@
+// Comprueba si la primera cadena aparece en la segunda respetando el orden
 #include <unistd.h>
 
 int main(int ac, char **av)
