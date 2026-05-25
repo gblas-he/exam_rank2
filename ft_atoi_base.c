@@ -1,78 +1,58 @@
-#include <stdio.h>
-/*
-Convierte una cadena de una base dada a entero.
-Ejemplo:
-"1010" base 2  → 10
-"1a"   base 16 → 26
-*/
+#include <unistd.h>
 
-// Convierte mayúscula a minúscula
-char	to_lower(char c)
+/* Convierte un carácter a valor numérico */
+static int	ft_value(char c)
 {
-	// Convierte mayúsculas a minúsculas
-	if (c >= 'A' && c <= 'Z')
-		return (c + ('a' - 'A'));
-
-	return (c);
-}
-
-// Devuelve valor numérico (0-15) del dígito o -1 si no es válido en esa base
-int	get_digit(char c, int digits_in_base)
-{
-	int	max_digit;
-
-	// Define el carácter máximo válido según la base
-	if (digits_in_base <= 10)
-		max_digit = digits_in_base + '0';
-	else
-		max_digit = digits_in_base - 10 + 'a';
-
-	// Convierte caracteres numéricos
-	if (c >= '0' && c <= '9' && c <= max_digit)
+	if (c >= '0' && c <= '9')
 		return (c - '0');
-
-	// Convierte caracteres hexadecimales/letras
-	else if (c >= 'a' && c <= 'f' && c <= max_digit)
-		return (10 + c - 'a');
-
-	// Carácter inválido
-	else
-		return (-1);
+	if (c >= 'a' && c <= 'f')
+		return (c - 'a' + 10);
+	if (c >= 'A' && c <= 'F')
+		return (c - 'A' + 10);
+	return (-1);
 }
 
-// Convierte string en base str_base a entero (ej: "-FF",16 -> -255)
+/* Convierte un número en cualquier base a decimal */
 int	ft_atoi_base(const char *str, int str_base)
 {
-	int	result = 0;
-	int	sign = 1;
-	int	digit;
-
-	// Detecta signo negativo
-	if (*str == '-')
+	int	result;
+	int	sign;
+	int	value;
+	int	i;
+	
+	/* Comprueba la base */
+	if (str_base < 2 || str_base > 16)
+		return (0);
+	result = 0;
+	sign = 1;
+	i = 0;
+	/* Comprueba signo negativo */
+	if (str[i] == '-')
 	{
 		sign = -1;
-		++str;
+		i++;
 	}
-
-	// Convierte cada carácter a número
-	while ((digit = get_digit(to_lower(*str), str_base)) >= 0)
+	/* Convierte mientras los caracteres sean válidos */
+	value = ft_value(str[i]);
+	// value < str_base: validación de la base. Comprueba que el carácter sea válido.
+	// str = "12A45" < base = 10 carácter no es válido bucle se rompe
+	while (value >= 0 && value < str_base)
 	{
-		// Multiplica por la base y añade el nuevo dígito
-		result = result * str_base;
-		result = result + (digit * sign);
-
-		++str;
+		result = result * str_base + value;
+		value = ft_value(str[++i]);
 	}
-
-	return (result);
+	/* Devuelve el resultado final */
+	return (result * sign);
 }
 
 int	main(void)
 {
-	printf("%d\n", ft_atoi_base("1010", 2));   // 10
-	printf("%d\n", ft_atoi_base("1a", 16));    // 26
-	printf("%d\n", ft_atoi_base("-111", 2));   // -7
-	printf("%d\n", ft_atoi_base("77", 8));     // 63
+	printf("Base 10: %d\n", ft_atoi_base("17628934", 10));
+	printf("Base 2: %d\n", ft_atoi_base("111010110111100110100010101", 2));
+	printf("Base 16: %d\n", ft_atoi_base("7DE98115", 16));
+	printf("Base 16 mayus: %d\n", ft_atoi_base("-1ABCDEF", 16));
+	printf("Base 8: %d\n", ft_atoi_base("726746425", 8));
+	printf("Negativo base 10: %d\n", ft_atoi_base("-987654321", 10));
 
 	return (0);
 }

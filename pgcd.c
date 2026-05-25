@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Calcula y muestra el máximo común divisor (MCD) de dos números
-
+// Calcula y muestra el máximo común divisor (MCD) de dos números. El número más grande que los divide 
+/* MCD: preguntas "¿n divide a a y b?"
+	if (a % n == 0 && b % n == 0)
+   MCM: preguntas "¿a y b dividen a n?"
+	if (n % a == 0 && n % b == 0)*/
 void	pgcd(int a, int b)
 {
 	int n = a;

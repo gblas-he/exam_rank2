@@ -1,5 +1,8 @@
-// Calcula el mínimo común múltiplo (LCM) de dos números
-
+// Calcula el mínimo común múltiplo (LCM) de dos números. El número positivo más pequeño que es múltiplo común
+/* MCD: preguntas "¿n divide a a y b?"
+	if (a % n == 0 && b % n == 0)
+   MCM: preguntas "¿a y b dividen a n?"
+	if (n % a == 0 && n % b == 0)*/
 unsigned int lcm(unsigned int a, unsigned int b)
 {
 	unsigned int n;	

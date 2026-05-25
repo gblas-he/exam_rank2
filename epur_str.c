@@ -13,7 +13,7 @@ int		ft_wordlen(char *str)
 {
 	int i = 0;
 
-	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t')
+	while (str[i] && str[i] != ' ' && str[i] != '\t')
 		++i;
 	return (i);
 }
@@ -27,7 +27,7 @@ void	epur_str(char *str)
 	int word_len;
 
 	i = skip_whitespace(str, i);  // Salta espacios iniciales
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (first_word == 0)       // Si no es la primera palabra
 			write(1, " ", 1);      // Imprime un espacio separador

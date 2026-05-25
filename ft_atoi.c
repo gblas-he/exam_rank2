@@ -15,9 +15,9 @@ int     ft_atoi(const char *str)
 	{
 		if (str[0] == '-')
 			sig = -1;
-		i += 1;
+		i++;
 	}
 	while (str[i] && str[i] >= '0' && str[i] <= '9')
-		nbr = (nbr * 10) + (str[i++] - '0');
+		nbr = (nbr * 10) + (str[i++] - '0'); // (nbr * 10) permite avanzar en el numero a la derecha
 	return (nbr * sig);
 }
