@@ -7,10 +7,10 @@ int	ft_digits(long int n)
 
 	len = 0;
 	if (n <= 0)
-		len = 1; // Para el '-' o el '0' porque necesita un espacio estos para el malloc
+		len++; // Para el '-' o el '0' porque necesita un espacio estos para el malloc
 	while (n)
 	{
-		n = n / 10;
+		n /= 10;
 		len++;
 	}
 	return (len);
