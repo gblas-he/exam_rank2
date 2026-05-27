@@ -1,5 +1,6 @@
 #include <unistd.h>
 
+// Convierte cada palabra de la cadena para que solo la última letra de cada palabra esté en mayúscula y el resto en minúsculas, e imprime el resultado.
 char	*rstr_capitalizer(char *str)
 {
 	int	i;

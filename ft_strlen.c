@@ -1,3 +1,4 @@
+
 // Calcula y devuelve la longitud de un string (número de caracteres hasta '\0')
 int     ft_strlen(char *str)
 {

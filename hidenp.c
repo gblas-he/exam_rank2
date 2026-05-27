@@ -12,15 +12,13 @@ int main(int ac, char **av)
     {
         i = 0;
         j = 0;
-        s1 = av[1];
-        s2 = av[2];
-        while(s2[j])
+        while(av[2][j])
         {
-            if (s2[j] == s1[i])
+            if (av[2][j] == av[1][i])
                 i++;
             j++;
         }
-        if (s1[i] == '\0')
+        if (av[1][i] == '\0')
             write(1, "1", 1);
         else
             write(1, "0", 1);
