@@ -20,4 +20,15 @@ unsigned int lcm(unsigned int a, unsigned int b)
 			return (n);
 		n++;
 	}
+	return (0);
+}
+
+int	main(void)
+{
+	unsigned int a = 12;
+	unsigned int b = 18;
+
+	printf("LCM(%u, %u) = %u\n", a, b, lcm(a, b));
+
+	return (0);
 }
