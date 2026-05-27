@@ -38,7 +38,7 @@ int	ft_atoi_base(const char *str, int str_base)
 	// str = "12A45" < base = 10 carácter no es válido bucle se rompe
 	while (value >= 0 && value < str_base)
 	{
-		result = result * str_base + value; // Multiplica el resultado por la base para desplazar los dígitos y suma el nuevo valor convertido.
+		result = (result * str_base) + value; // Multiplica el resultado por la base para desplazar los dígitos y suma el nuevo valor convertido.
 		value = ft_value(str[++i]);
 	}
 	/* Devuelve el resultado final */

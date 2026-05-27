@@ -11,11 +11,7 @@ unsigned int lcm(unsigned int a, unsigned int b)
 	if (a == 0 || b == 0)
 		return (0);
 
-	// Empieza desde el número mayor
-	if (a > b)
-		n = a;
-	else
-		n = b;
+	n = 1;
 
 	// Busca el primer múltiplo común
 	while (1)
