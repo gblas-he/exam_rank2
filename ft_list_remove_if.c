@@ -24,11 +24,12 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
     }
 
     current = *begin_list;
-    
+
     // Queremos eliminar en nodo 2: begin_list → [nodo1] → [nodo2] → [nodo3] → NULL .Usamos current para el resto porque solo redirigimos current->next. 
     // si no coinciden en el inicio. Recorrer el resto de la lista
     while (current && current->next)
     {
+        // Nos paramos en el anterior porque para poder eliminar un nodo necesitas estar parado en el nodo anterior.
         if (cmp(current->next->data, data_ref) == 0)
         {
             tmp = current->next;
