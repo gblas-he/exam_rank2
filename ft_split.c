@@ -3,62 +3,61 @@
 
 int ft_lenght(char *s)
 {
-	int i = 0;
-	while (s[i] && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
-	{
-		i++;
-	}
-	return (i);
+    int i = 0;
+    while(s[i] && s[i] != ' ' && s[i] != '\n' && s[i] != '\t')
+        i++;
+    return (i);
 }
 
-int count_words(char *str)
+int count_words(char *s)
 {
-	int i = 0;
-	int words = 0;
-
-	while (str[i])
-	{
-		while(str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
-			i++;
-        if (str[i])
+    int i = 0;
+    int words = 0;
+    while(s[i])
+    {
+        while(s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+            i++;
+		// para evitar que continue que continue contando si llega al final
+        if (s[i])
             words++;
-		while(str[i] && str[i] != ' '&& str[i] != '\t' && str[i] != '\n')
-			i++;
-	}
-	return (words);
+        while(s[i] && s[i] != ' ' && s[i] != '\n' && s[i] != '\t')
+            i++;
+    }
+    return(words);
 }
 
 void fill_words(char **arr, char *s)
 {
-	int i = 0;
-	int w = 0;
-	while(s[i])
-	{
-		while(s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
-			i++;
+    int i = 0;
+    int j = 0;
+
+    while (s[i])
+    {
+        while(s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+            i++;
+		// para evitar que continue si llego al final despues de saltar espacios
         if (!s[i])
             break;
-		arr[w] = malloc(ft_lenght(&s[i]) + 1);
-		if (!arr[w])
-			return;
-		int j = 0;
-		while (s[i] && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
-			arr[w][j++] = s[i++];
-		arr[w][j] = '\0';
-		w++;
-	}
+        arr[j] = malloc(sizeof(char) * (ft_lenght(&s[i]) + 1));
+        if(!arr[j])
+            return;
+        int k = 0;
+        while(s[i] && s[i] != ' ' && s[i] != '\n' && s[i] != '\t')
+            arr[j][k++] = s[i++];
+        arr[j][k] = '\0';
+        j++;
+    }
 }
 
 char    **ft_split(char *str)
 {
-	int words;
-
-	words = count_words(str);
-	char **arr = malloc(sizeof(char *) * (words + 1));
-	if (!arr)
-    	return NULL;
-	arr[words] = NULL;
-	fill_words(arr, str);
+    int words = count_words(str);
+    char **arr = malloc(sizeof(char *) * (words + 1));
+    if(!arr)
+        return (NULL);
+     // marca el fin del array de strings. Es como '\0' pero con array de string
+    arr[words] = NULL;
+    fill_words(arr, str);
 	return (arr);
 }
 
@@ -80,4 +79,13 @@ int main(void)
         write(1, "\n", 1);
         i++;
     }
+
+    // Liberar memoria
+    i = 0;
+    while (s[i])
+    {
+        free(s[i]);
+        i++;
+    }
+    free(s);
 }
