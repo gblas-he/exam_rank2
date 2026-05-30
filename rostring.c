@@ -1,25 +1,11 @@
 #include <unistd.h>
 
-// Mueve la primera palabra al final de la string
-void	rostring(char *s)
+// Limpia espacios extra: imprime la cadena con una sola separación entre palabras
+void epur_str(char *s)
 {
-	int	i = 0;
-	int	start;
-	int	end;
-	int	flag = 0;
+	int i = 0;
+	int flag = 0;
 
-	// guardar primera palabra
-	while (s[i] == ' ' || s[i] == '\t')
-		i++;
-
-	start = i;
-
-	while (s[i] && s[i] != ' ' && s[i] != '\t')
-		i++;
-
-	end = i;
-
-	// imprimir resto
 	while (s[i])
 	{
 		while (s[i] == ' ' || s[i] == '\t')
@@ -35,10 +21,27 @@ void	rostring(char *s)
 			flag = 1;
 		}
 	}
-
-	// imprimir espacio antes de la primera palabra
+	
+	// variación epur_str: imprimir espacio antes de la primera palabra si hay resto si no no imprime espacio
 	if (flag)
 		write(1, " ", 1);
+}
+
+// Mueve la primera palabra al final de la string
+void rostring(char *s)
+{
+	int i = 0;
+	int start = 0;
+	int end = 0;
+
+	// guardar primera palabra
+	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
+		i++;
+	start = i;
+	while (s[i] && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
+		i++;
+	end = i;
+	epur_str(&s[i]);
 
 	// imprimir primera palabra
 	while (start < end)
@@ -48,11 +51,10 @@ void	rostring(char *s)
 	}
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	if (ac > 1)
+	if (ac >= 2)
 		rostring(av[1]);
-
-	write(1, "\n", 1);
+	write (1, "\n", 1);
 	return (0);
 }
