@@ -21,7 +21,7 @@ t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
 			swap = lst->data;
 			lst->data = lst->next->data;
 			lst->next->data = swap;
-			lst = tmp; // Vuelve al inicio para verificar de nuevo pq puede estar 
+			lst = tmp; // Vuelve al inicio para verificar de nuevo pq puede estar. Es como i = 0 en sort_int_tab
 			// desordenado los nodos anteriores ya que arregla hasta el final un nodo pero los demas no
 		}
 		else

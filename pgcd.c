@@ -18,6 +18,7 @@ void	pgcd(int a, int b)
 			printf("%d", n);
 			return;
 		}
+		// n-- lo usamos en este caso porque usamos n como un iterador de n hasta 0
 		n--;
 	}
 }

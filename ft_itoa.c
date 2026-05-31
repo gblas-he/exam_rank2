@@ -25,7 +25,7 @@ char	*ft_itoa(int n)
 
 	num = n;
 	len = ft_digits(num);
-	str = (char *)malloc(sizeof(char) * (len + 1));
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
 	str[len] = '\0';
