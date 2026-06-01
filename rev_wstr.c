@@ -39,3 +39,30 @@ int	main(int ac, char **av)
 		rev_wstr(av[1]);
 	write(1, "\n", 1);
 }
+
+/* void rev_wstr(char *s)
+{
+	int i = 0;
+	int end = 0;
+	int start = 0;
+	while(s[i])
+		i++;
+	i--;
+	while (i >= 0)
+	{
+		while (s[i] && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
+			i--;
+		end = i;
+		while (s[i] &&s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
+			i--;
+		start = i;
+		while(start <= end)
+		{
+			if (s[start] != ' ' && s[start])
+				write(1, &s[start], 1);
+			start++;
+		}
+		if (s[i])
+			write (1," ", 1);
+	}
+} */

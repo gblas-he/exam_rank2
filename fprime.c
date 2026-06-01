@@ -9,6 +9,7 @@ int		is_prime(int n)
 	{
 		if (n % i == 0)
 			return (0);
+	//el uso en esta expresión ++i y i++ son equivalentes
 		++i;
 	}
 	return (1);
@@ -36,7 +37,7 @@ void	fprime(char *str)
 			first = 0;
 			n = n / factor;
 		}
-		//no se usa en una expresión ++factor y factor++ son equivalentes
+		//el uso de en esta expresión ++factor y factor++ son equivalentes
 		else
 			++factor;
 	}
