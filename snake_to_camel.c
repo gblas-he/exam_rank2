@@ -1,21 +1,22 @@
-#include <stdlib.h>
 #include <unistd.h>
 
 // Convierte una cadena en formato snake_case a camelCase eliminando '_' y capitalizando la letra siguiente.
-int main(int argc, char **argv)
+int main (int ac, char **av)
 {
-	if (argc == 2)
+	int i = 0;
+	if (ac == 2)
 	{
-		for (int i = 0; argv[1][i]; i += 1)
+		while(av[1][i])
 		{
-			if (argv[1][i] == '_')
+			if (av[1][i] >= 'A' && av[1][i] <= 'Z')
 			{
-				i += 1;
-				argv[1][i] -= 32;
+				av[1][i] += 32;
+				write(1,"_", 1);
 			}
-			write(STDOUT_FILENO, &argv[1][i], 1);
+			write(1, &av[1][i], 1);
+			i++;
 		}
 	}
-	write(STDOUT_FILENO, "\n", 1);
-	return EXIT_SUCCESS;
+	write (1, "\n", 1);
+	return (0);
 }

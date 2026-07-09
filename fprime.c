@@ -22,9 +22,6 @@ void	fprime(char *str)
 	int factor = 2;
 	int first = 1;
 
-	if (n == 1)
-		printf("1");
-
 	while (factor <= n)
 	{
 		// (números primos que dividen exactamente a n)

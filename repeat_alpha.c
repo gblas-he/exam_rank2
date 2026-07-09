@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 		{
 			k = 1;
 			if (str[i] >= 'A' && str[i] <= 'Z')
-				k = str[i] - 64;
+				k = str[i] - 64; // si le restas 64 queda la posicion de la vocal
 			if (str[i] >= 'a' && str[i] <= 'z')
 				k = str[i] - 96;
 			while (k >= 1)

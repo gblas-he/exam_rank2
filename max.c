@@ -1,13 +1,17 @@
 // Devuelve el valor máximo de un array de enteros de tamaño len.
+#include <unistd.h>
+
 int	max(int* tab, unsigned int len)
 {
+	unsigned int i = 0;
 	if (len == 0)
 		return (0);
-	int res = tab[0];
-	for (unsigned int i = 0; i < len; i += 1)
+	int max = tab[0];
+	while(i < len)
 	{
-		if (res < tab[i])
-			res = tab[i];
+		if (tab[i] > max)
+			max = tab[i];
+		i++;		 
 	}
-	return (res);
+	return (max);
 }

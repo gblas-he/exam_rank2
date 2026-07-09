@@ -17,7 +17,7 @@ int count_words(char *s)
     {
         while(s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
             i++;
-		// para evitar que continue que continue contando si llega al final
+		// para evitar que continue que continue contando si llega al final. Seguiria ciontando sin if
         if (s[i])
             words++;
         while(s[i] && s[i] != ' ' && s[i] != '\n' && s[i] != '\t')

@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Ordena un array de enteros de menor a mayor intercambiando elementos adyacentes.
 void	sort_int_tab(int *tab, unsigned int size)
 {
 	unsigned int	i = 0;

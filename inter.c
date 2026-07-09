@@ -1,43 +1,39 @@
 #include <unistd.h>
 
-int	repeated_before(char *str, char c, int pos)
+int main(int ac, char **av)
 {
-	int	i;
-
-	i = 0;
-	while (i < pos)
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	main(int ac, char **av)
-{
-	int	i;
-	int	j;
-	char	*s1;
-	char	*s2;
+	int i;
+	int j;
+	int repeated;
 
 	if (ac == 3)
 	{
-		s1 = av[1];
-		s2 = av[2];
 		i = 0;
-		while (s1[i])
+		while (av[1][i]) // Recorre la primera cadena
 		{
+			repeated = 0;
 			j = 0;
-			while (s2[j])
+			while (j < i) // Comprueba si la letra ya apareció antes
 			{
-				if (s1[i] == s2[j]
-					&& !repeated_before(s1, s1[i], i))
+				if (av[1][j] == av[1][i])
 				{
-					write(1, &s1[i], 1);
-					break ;
+					repeated = 1;
+					break;
 				}
 				j++;
+			}
+			if (!repeated) // Solo busca si es la primera aparición
+			{
+				j = 0;
+				while (av[2][j]) // Busca la letra en la segunda cadena
+				{
+					if (av[2][j] == av[1][i])
+					{
+						write(1, &av[1][i], 1); // Imprime la coincidencia
+						break; // Evita imprimirla varias veces
+					}
+					j++;
+				}
 			}
 			i++;
 		}
