@@ -1,4 +1,3 @@
-
 #include <unistd.h>
 
 // Intercambia los 4 bits altos y los 4 bits bajos de un byte (nibble swapping).

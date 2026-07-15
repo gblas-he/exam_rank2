@@ -6,21 +6,23 @@ void	rev_wstr(char *s)
 	int	i = 0;
 	int	first = 1;
 
+	// ir al final del string
 	while (s[i])
 		i++;
 	i--;
-
+	// i-- para estar en la ultima letra y no en '\0'
 	while (i >= 0)
 	{
+		// por que recorrer desde el final puede haber espacios
 		while (i >= 0 && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
 			i--;
-		// por que recorrer desde el principio puede a ver espacios
 		// capturamos el caracter final
 		int end = i;
 		while (i >= 0 && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
 			i--;
+		// i + 1 porque si no no coje primera letra 
 		int start = i + 1;
-		// si no es lapriemra palabra imprime espacio si no quedaria " hola mundo"
+		// si no es la priemra palabra imprime espacio si no quedaria " hola mundo"
 		if (!first)
 			write(1, " ", 1);
 		//ponemos un limite en la palabra para que no se rompa el bucle

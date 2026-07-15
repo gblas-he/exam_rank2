@@ -1,25 +1,22 @@
-
 #include <unistd.h>
-#include <stdio.h>
-#include <string.h>
 
 // Devuelve la longitud del prefijo de la cadena s que no contiene ningún carácter presente en reject.
 size_t  ft_strcspn(const char *s, const char *reject)
 {
 	size_t	i;
-	size_t	k;
+	size_t	j;
 
 	i = 0;
-	k = 0;
-	while (s[i] != '\0')
+	j = 0;
+	while (s[i])
 	{
-		while (reject[k] != '\0')
+		while (reject[j])
 		{
-			if (reject[k] == s[i])
+			if (reject[j] == s[i])
 				return (i);
-			k++;
+			j++;
 		}
-		k = 0;
+		j = 0;
 		i++;
 	}
 	return (i);

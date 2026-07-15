@@ -1,48 +1,43 @@
 #include <unistd.h>
 
 // Convierte cada palabra para que la primera letra sea mayúscula y el resto minúsculas, imprimiendo el resultado.
-void	str_capitalizer(char *str)
+char	*str_capitalizer(char *str)
 {
-	while (*str != '\0')
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		while (*str != '\0' && (*str == ' ' || *str == '\t'))
-		{
-			write(1, str, 1);
-			++str;
-		}
+		// Convertir a minúscula si es mayúscula
+		if (str[i] >= 'A' && str[i] <= 'Z')
+	 		str[i] = str[i] + 32;
 
-		if (*str != '\0')
-		{
-			if (*str >= 'a' && *str <= 'z')
-				*str = *str - ('a' - 'A');
-			write(1, str, 1);
-			++str;
-		}
+		// Si es la primera letra del string, o la anterior es espacio/tab,
+		// ponerla en mayúscula
+		if ((str[i] >= 'a' && str[i] <= 'z') &&
+			(i == 0 || str[i - 1] == ' ' || str[i - 1] == '\t'))
+			str[i] = str[i] - 32;
 
-		while (*str != '\0' && *str != ' ' && *str != '\t')
-		{
-			if (*str >= 'A' && *str <= 'Z')
-				*str = *str + ('a' - 'A');
-			write(1, str, 1);
-			++str;
-		}
+		write(1, &str[i], 1);
+		i++;
 	}
-	write(1, "\n", 1);
+	return (str);
 }
 
-int		main(int argc, char **argv)
+int main(int ac, char **av)
 {
-	if (argc == 1)
-		write(1, "\n", 1);
+    int i = 1;
+    
+    if (ac >= 2)
+    {
+        while (i < ac)
+        {
+            str_capitalizer(av[i]);
+            write(1, "\n", 1);
+            i++;
+        }
+    }
 	else
-	{
-		int i = 1;
-		while (i < argc)
-		{
-			str_capitalizer(argv[i]);
-			++i;
-		}
-	}
-
-	return (0);
+    	write(1, "\n", 1);
+    return (0);
 }

@@ -7,20 +7,19 @@ int main (int ac, char **av)
     if (ac == 2)
     {
         int i = 0;
-        char *str = av[1];
-        int flag = 0;
+        char *s = av[1];
+        int flag = 1;
 
-        while(str[i])
+        while(s[i])
         {
-            while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+            while(s[i] && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
                 i++;
-            if (str[i] && flag == 1)
-                write (1, " ", 1);
-            while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+            if(!flag)
+                write(1, " ", 1);
+            while(s[i] && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
             {
-                write (1, &str[i], 1);
-                flag = 1;
-                i++;
+                write(1, &s[i++], 1);
+                flag = 0;
             }
         }
     }

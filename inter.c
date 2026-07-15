@@ -1,5 +1,6 @@
 #include <unistd.h>
 
+// Imprime, sin duplicados y en orden de aparición, las letras de av[1] que también están en av[2]
 int main(int ac, char **av)
 {
 	int i;

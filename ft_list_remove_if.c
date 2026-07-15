@@ -6,9 +6,11 @@ typedef struct      s_list
     void            *data;
 } 					t_list;
 
+// Elimina de la lista enlazada todos los nodos cuyo contenido coincide con data_ref.
 void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 {
     t_list *current;
+    // tmp ya no es un puntero, sino un nodo completo. Por eso creamos *tmp q es un puntero a un nodo
     t_list *tmp;
 
     if (!begin_list || !*begin_list)
@@ -25,7 +27,7 @@ void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)())
 
     current = *begin_list;
 
-    // Queremos eliminar en nodo 2: begin_list → [nodo1] → [nodo2] → [nodo3] → NULL .Usamos current para el resto porque solo redirigimos current->next. 
+    // Queremos eliminar en nodo 2,3,4,etc: begin_list → [nodo1] → [nodo2] → [nodo3] → NULL .Usamos current para el resto porque solo redirigimos current->next. 
     // si no coinciden en el inicio. Recorrer el resto de la lista
     while (current && current->next)
     {

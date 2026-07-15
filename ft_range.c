@@ -1,9 +1,4 @@
 #include <stdlib.h>
-#include <stdio.h>
-
-// Crea un array con números desde start hasta end
-#include <stdlib.h>
-#include <stdio.h>
 
 // Crea un array con números desde start hasta end
 int	*ft_range(int start, int end)

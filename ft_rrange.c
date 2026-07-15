@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 
 int		absolute_value(int n);
@@ -6,25 +5,36 @@ int		absolute_value(int n);
 // Reserva y devuelve un array de enteros con todos los valores desde end hasta start en orden inverso.
 int		*ft_rrange(int start, int end)
 {
-	int number_of_ints;
-	int *array;
-	int step;
+	int size;
 	int i;
 
-	number_of_ints = 1 + absolute_value(end - start);
-	array = malloc(sizeof(int) * number_of_ints);
+	size = 0;
+	if(start > end)
+		size = start - end;
+	else 
+		size = end - start;
+	
+	int *arr = malloc(sizeof(int) * (size + 1));
+	if (!arr)
+		return (NULL);
 
-	if (start > end)
-		step = 1;
-	else
-		step = -1;
-
-	i = 0;
-	while (i < number_of_ints)
+	if(start > end)
 	{
-		array[i] = end;
-		end = end + step;
-		++i;
+		i = 0;
+		while(start >= end)
+		{
+			arr[i++] = start;
+			start--;
+		}
 	}
-	return (array);
+	else
+	{
+		i = 0;
+		while(end >= start)
+		{
+			arr[i++] = end;
+			end--;
+		}
+	}
+	return (arr);
 }
