@@ -8,6 +8,7 @@ int         is_power_of_2(unsigned int n)
 		return (0);
 	while (n > 1)
 	{
+	// Una potencia de 2 siempre puede dividirse entre 2 hasta llegar a 1.
 		if (n % 2 == 0)
 			n = n / 2;
 		else

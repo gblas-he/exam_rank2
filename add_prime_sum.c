@@ -1,62 +1,78 @@
 #include <unistd.h>
-
-int		ft_atoi(char *str)
-{
-	int n = 0;
-
-	while (*str >= '0' && *str <= '9')
-	{
-		n *= 10;
-		n += *str - '0';
-		++str;
-	}
-	return (n);
-}
-
 void	ft_putnbr(int n)
 {
+	char c;
+
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+	}
 	if (n >= 10)
 		ft_putnbr(n / 10);
-	char c = (n % 10) + '0';
+	c = (n % 10) + '0';
 	write(1, &c, 1);
 }
 
-int		is_prime(int n)
+int ft_atoi(char *s)
 {
-	int i = 2;
+	int i;
+	int sign;
+	int n;
 
-	while (i < n)
+	i = 0;
+	sign = 1;
+	if (s[i] == '+' || s[i] == '-')
 	{
-		if (n % i == 0)
+		if(s[i] == '-')
+			sign = -1;
+		i++;
+	}
+	n = 0;
+	while(s[i] >= '0' && s[i] <= '9')
+	{
+		n = (n * 10) + (s[i] - '0');
+		i++;
+	}
+	return (n * sign);
+}
+
+int isprime(int n)
+{
+	int i;
+
+	i = 2;
+	while(i < n)
+	{
+		if(n % i == 0)
 			return (0);
-		++i;
+		i++;
 	}
 	return (1);
 }
 
 // Convierte un número de la entrada y calcula la suma de todos los números primos desde 2 hasta n, imprimiendo el resultado.
-int		add_prime_sum(int n)
+int main(int ac, char **av)
 {
-	int sum = 0;
-	int i = 2;
-
-	while (i <= n)
-	{
-		if (is_prime(i) == 1)
-			sum += i;
-		++i;
-	}
-	return (sum);
-}
-
-int		main(int argc, char **argv)
-{
+	int i;
 	int n;
+	int sum;
 
-	if (argc == 2 && (n = ft_atoi(argv[1])))
-		ft_putnbr(add_prime_sum(n));
+	if (ac == 2)
+	{
+		sum = 0;
+		i = 2;
+		n = ft_atoi(av[1]);
+		while(i <= n)
+		{
+			if(isprime(i))
+				sum += i;
+			i++;
+		}
+		ft_putnbr(sum);
+	}
 	else
 		ft_putnbr(0);
 	write(1, "\n", 1);
-	return (0);
+	return(0);
 }

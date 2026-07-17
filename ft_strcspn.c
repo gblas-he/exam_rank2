@@ -7,16 +7,15 @@ size_t  ft_strcspn(const char *s, const char *reject)
 	size_t	j;
 
 	i = 0;
-	j = 0;
 	while (s[i])
 	{
+		j = 0;
 		while (reject[j])
 		{
 			if (reject[j] == s[i])
-				return (i);
+				return (i); // break; si usamos esto solo sale del segundo bucle pero continua con el primero
 			j++;
 		}
-		j = 0;
 		i++;
 	}
 	return (i);

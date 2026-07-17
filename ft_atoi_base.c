@@ -34,7 +34,7 @@ int	ft_atoi_base(const char *str, int str_base)
 	}
 	/* Convierte mientras los caracteres sean válidos */
 	value = ft_value(str[i]);
-	// value < str_base: validación de la base. Comprueba que el carácter sea válido.
+	// value < str_base: validación de la base. Comprueba que el carácter sea válido. <dnetro del rango de la base
 	// str = "12A45" < base = 10 carácter no es válido bucle se rompe
 	while (value >= 0 && value < str_base)
 	{

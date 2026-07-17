@@ -8,9 +8,9 @@ void print_bits(unsigned char octet)
 
 	while (i--)
 	{
-		bit = (octet >> i & 1) + '0';
+		bit = (octet >> i & 1) + '0'; //'0' de número a caracter: +'0' de carcter a numero: -'0'
 		write(1, &bit, 1);
-	}
+		// octet >>= 1. No existe una forma de imprimirlos en el orden correcto sin almacenarlos antes o usar recursividad
 }
 
 unsigned char	reverse_bits(unsigned char octet)
@@ -22,12 +22,12 @@ unsigned char	reverse_bits(unsigned char octet)
 	while (i--)
 	{
 		// (res << 1) Desplaza res a la izquierda en 1, 
-		// (octet & 1) operacion and con el ultimo elemento de octet, bit menos significativo 
-		// | ( es una operacion or y significa suma)
+		// (octet & 1) operacion and con el ultimo elemento de octet lo mete en bit menos significativo 
+		// | ( es una operacion or y significa suma). Es decir mete el ultimo octet en res y desplaza a res en uno para meter el siguiente
 		res = (res << 1) | (octet & 1);
 
-		// Desplaza octet a la derecha en 1 bit
-		octet >>= 1;
+		octet >>= 1; // octet >>= 1. Desplaza a la derecha los bits y actualiza la variable.
+		// octet >> 1. Desplaza los bits sin modificar la variable.
 	}
 
 	return (res);

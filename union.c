@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-// Concatena dos cadenas y luego imprime los caracteres únicos (sin repeticiones), en orden de aparición.
+// Concatena, sin duplicados y en orden de aparición, las letras unicas que no aparecen en ambas cadenas.
 int main(int ac, char **av)
 {
 	int i;

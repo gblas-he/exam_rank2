@@ -13,9 +13,9 @@ void	print_bits(unsigned char octet)
 	{
 		// Desplaza el bit deseado y obtiene solo 0 o 1
 		bit = (octet >> i & 1) + '0';
-
 		// Escribe el bit como carácter
 		write(1, &bit, 1);
+		// octet >>= 1. No existe una forma de imprimirlos en el orden correcto sin almacenarlos antes o usar recursividad
 	}
 }
 
