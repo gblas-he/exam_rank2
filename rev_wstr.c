@@ -18,20 +18,20 @@ void	rev_wstr(char *s)
 			i--;
 		// capturamos el caracter final
 		int end = i;
+		// si no es la priemra palabra imprime espacio si no quedaria " hola mundo"
+		if (!first)
+			write(1, " ", 1);
 		while (i >= 0 && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
 			i--;
 		// i + 1 porque si no no coje primera letra 
 		int start = i + 1;
-		// si no es la priemra palabra imprime espacio si no quedaria " hola mundo"
-		if (!first)
-			write(1, " ", 1);
 		//ponemos un limite en la palabra para que no se rompa el bucle
 		while (start <= end)
 		{
-			write(1, &s[start], 1);
-			start++;
+			write(1, &s[start++], 1);
+			first = 0;
 		}
-		first = 0;
+
 	}
 }
 

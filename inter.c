@@ -5,25 +5,25 @@ int main(int ac, char **av)
 {
 	int i;
 	int j;
-	int repeated;
+	int rep;
 
 	if (ac == 3)
 	{
 		i = 0;
 		while (av[1][i]) // Recorre la primera cadena
 		{
-			repeated = 0;
+			rep = 0;
 			j = 0;
 			while (j < i) // Comprueba si la letra ya apareció antes
 			{
 				if (av[1][j] == av[1][i])
 				{
-					repeated = 1;
+					rep = 1;
 					break;
 				}
 				j++;
 			}
-			if (!repeated) // Solo busca si es la primera aparición
+			if (!rep) // Solo busca si es la primera aparición
 			{
 				j = 0;
 				while (av[2][j]) // Busca la letra en la segunda cadena

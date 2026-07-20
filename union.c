@@ -5,56 +5,56 @@ int main(int ac, char **av)
 {
 	int i;
 	int j;
-	int repeated;
+	int rep;
 
 	if (ac == 3)
 	{
 		i = 0;
 		while (av[1][i]) // Recorre la primera cadena
 		{
-			repeated = 0;
+			rep = 0;
 			j = 0;
 			while (j < i) // Comprueba si la letra ya apareció antes en av[1]
 			{
 				if (av[1][j] == av[1][i])
 				{
-					repeated = 1;
+					rep = 1;
 					break;
 				}
 				j++;
 			}
-			if (!repeated) // Solo la primera aparición se imprime
+			if (!rep) // Solo la primera aparición se imprime
 				write(1, &av[1][i], 1);
 			i++;
 		}
 		i = 0;
 		while (av[2][i]) // Recorre la segunda cadena
 		{
-			repeated = 0;
+			rep = 0;
 			j = 0;
 			while (av[1][j]) // Comprueba si la letra ya apareció en av[1]
 			{
 				if (av[1][j] == av[2][i])
 				{
-					repeated = 1;
+					rep = 1;
 					break;
 				}
 				j++;
 			}
-			if (!repeated)
+			if (!rep)
 			{
 				j = 0;
 				while (j < i) // Comprueba si ya apareció antes en av[2]
 				{
 					if (av[2][j] == av[2][i])
 					{
-						repeated = 1;
+						rep = 1;
 						break;
 					}
 					j++;
 				}
 			}
-			if (!repeated) // Solo si no está ni en av[1] ni repetida en av[2]
+			if (!rep) // Solo si no está ni en av[1] ni repetida en av[2]
 				write(1, &av[2][i], 1);
 			i++;
 		}

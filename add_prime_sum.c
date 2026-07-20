@@ -8,7 +8,7 @@ void	ft_putnbr(int n)
 		write(1, "-", 1);
 		n = -n;
 	}
-	if (n >= 10)
+	if (n > 9)
 		ft_putnbr(n / 10);
 	c = (n % 10) + '0';
 	write(1, &c, 1);
@@ -24,16 +24,12 @@ int ft_atoi(char *s)
 	sign = 1;
 	if (s[i] == '+' || s[i] == '-')
 	{
-		if(s[i] == '-')
+		if(s[i++] == '-')
 			sign = -1;
-		i++;
 	}
 	n = 0;
 	while(s[i] >= '0' && s[i] <= '9')
-	{
-		n = (n * 10) + (s[i] - '0');
-		i++;
-	}
+		n = (n * 10) + (s[i++] - '0');
 	return (n * sign);
 }
 

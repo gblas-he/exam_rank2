@@ -21,20 +21,12 @@ int	*ft_range(int start, int end)
 	if (start < end)
 	{
 		while (start <= end)
-		{
-			res[i] = start;
-			start++;
-			i++;
-		}
+			res[i++] = start++;
 	}
 	else
 	{
 		while (start >= end)
-		{
-			res[i] = start;
-			start--;
-			i++;
-		}
+			res[i++] = start--;
 	}
 
 	return (res);
