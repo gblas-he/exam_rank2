@@ -12,9 +12,8 @@ unsigned int lcm(unsigned int a, unsigned int b)
 		return (0);
 
 	n = 1;
-
 	// Busca el primer múltiplo común
-	while (1)
+	while (n)
 	{
 		if (n % a == 0 && n % b == 0)
 			return (n);

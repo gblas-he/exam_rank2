@@ -89,3 +89,32 @@ int main(void)
     }
     free(s);
 }
+
+/* // Se puede hacer el fill_words en otro orden me requereria un sefguridad extra
+void	fill_words(char **a, char *s)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		a[j] = malloc(ft_lenght(&s[i]) + 1);
+		if (!a[j])
+			return ;
+		while (s[i] && (s[i] == ' ' || s[i] == '\t' || s[i] == '\n'))
+			i++;
+		if (!s[i])
+		{
+			free(a[j]);
+			break ;
+		}
+		k = 0;
+		while (s[i] && s[i] != ' ' && s[i] != '\t' && s[i] != '\n')
+			a[j][k++] = s[i++];
+		a[j][k] = '\0';
+		j++;
+	}
+} */
